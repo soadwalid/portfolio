@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soad Walid Omar — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0c08;color:#e8e8e0;font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
+
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 3.5rem;border-bottom:1px solid #1c1e16;background:#0a0c08;position:sticky;top:0;z-index:100}
+.nav-logo{font-size:.82rem;letter-spacing:2px;color:#c8ff00;font-weight:600;font-family:'Space Grotesk',monospace}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:#555849;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:#c8ff00}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:5rem 3.5rem;min-height:calc(100vh - 56px);position:relative;overflow:hidden}
+.hero::before{content:'SW';position:absolute;right:-3rem;top:50%;transform:translateY(-50%);font-family:'Playfair Display',serif;font-size:22rem;font-weight:900;color:#0e1009;line-height:1;pointer-events:none;z-index:0}
+.hero-left{position:relative;z-index:1}
+
+.avail-badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid #2a2e1e;padding:.4rem 1rem;border-radius:20px;font-size:.72rem;color:#c8ff00;margin-bottom:2rem;letter-spacing:1px;font-family:'Space Grotesk',monospace;opacity:0;animation:fadeUp .6s .1s forwards}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:#c8ff00;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-name{font-family:'Playfair Display',serif;font-weight:900;line-height:.9;letter-spacing:-3px;margin-bottom:1.4rem}
+.hero-name .line1{font-size:5.5rem;display:block;opacity:0;animation:fadeUp .7s .05s forwards}
+.hero-name .line1 .w{color:#f0ece0}
+.hero-name .line1 .g{color:#c8ff00;font-style:italic}
+.hero-name .line2{font-size:5.5rem;color:#f0ece0;display:block;opacity:0;animation:fadeUp .7s .2s forwards}
+
+.hero-sub{font-size:.82rem;color:#4d5040;letter-spacing:2px;font-family:'Space Grotesk',monospace;margin-bottom:1.2rem;opacity:0;animation:fadeUp .6s .35s forwards}
+.hero-desc{font-size:.9rem;color:#7a7d6a;line-height:1.85;max-width:440px;margin-bottom:2.2rem;opacity:0;animation:fadeUp .6s .45s forwards}
+.hero-btns{display:flex;gap:1rem;opacity:0;animation:fadeUp .6s .55s forwards}
+.btn-lime{background:#c8ff00;color:#0a0c08;padding:.72rem 1.8rem;border:none;border-radius:4px;font-size:.78rem;font-weight:700;letter-spacing:1.5px;cursor:pointer;font-family:'Space Grotesk',sans-serif;text-transform:uppercase;transition:transform .15s,box-shadow .2s}
+.btn-lime:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(200,255,0,.22)}
+.btn-ghost{background:transparent;color:#d0cfc6;padding:.72rem 1.6rem;border:1px solid #2a2e1e;border-radius:4px;font-size:.78rem;cursor:pointer;font-family:'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:1px;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:#c8ff00;color:#c8ff00}
+
+/* HERO RIGHT — stats */
+.hero-right{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat-card{background:#111408;border:1px solid #1c1e16;border-radius:14px;padding:1.6rem;opacity:0;animation:fadeUp .6s forwards}
+.stat-card:nth-child(1){animation-delay:.3s}
+.stat-card:nth-child(2){animation-delay:.4s}
+.stat-card:nth-child(3){animation-delay:.5s}
+.stat-card:nth-child(4){animation-delay:.6s}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:#c8ff00;line-height:1;margin-bottom:.4rem}
+.stat-lbl{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:#3a3d2e}
+
+/* ABOUT — photo section */
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 3.5rem;border-top:1px solid #1c1e16;border-bottom:1px solid #1c1e16}
+.about-img-side{position:relative}
+.about-img{width:100%;max-width:360px;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:14px;display:block;filter:contrast(1.04) brightness(.93);transform:translateY(30px) scale(.97);opacity:0;transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .9s}
+.about-img.vis{transform:translateY(0) scale(1);opacity:1}
+.img-border-accent{position:absolute;bottom:-14px;right:-14px;width:55%;height:55%;border:2px solid #c8ff00;border-radius:14px;z-index:-1;transform:translate(6px,6px);opacity:0;transition:opacity .9s .35s,transform .9s .35s cubic-bezier(.16,1,.3,1)}
+.about-img.vis~.img-border-accent{opacity:1;transform:translate(0,0)}
+.img-badge{position:absolute;top:1rem;left:1rem;background:#c8ff00;color:#0a0c08;font-size:.6rem;font-weight:700;letter-spacing:2px;padding:.3rem .75rem;border-radius:3px;text-transform:uppercase;font-family:'Space Grotesk',monospace}
+
+.about-text-side .eyebrow{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#c8ff00;margin-bottom:.5rem;font-family:'Space Grotesk',monospace}
+.about-text-side h2{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:#f0ece0;line-height:1.1;margin-bottom:1.3rem}
+.about-text-side p{font-size:.87rem;color:#7a7d6a;line-height:1.9;margin-bottom:.9rem}
+.about-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
+.chip{background:#111408;border:1px solid #2a2e1e;padding:.3rem .75rem;border-radius:4px;font-size:.72rem;color:#c8ff00}
+
+/* SKILLS */
+.skills-wrap{padding:5rem 3.5rem;border-bottom:1px solid #1c1e16}
+.eyebrow{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#c8ff00;margin-bottom:.4rem;font-family:'Space Grotesk',monospace}
+.sec-h{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:900;color:#f0ece0;margin-bottom:3rem}
+.skill-group{margin-bottom:2rem;opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.skill-group.vis{opacity:1;transform:translateY(0)}
+.skill-group:nth-child(2){transition-delay:.1s}
+.skill-group:nth-child(3){transition-delay:.2s}
+.sg-label{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#00e5a0;margin-bottom:.9rem;font-family:'Space Grotesk',monospace}
+.sg-tags{display:flex;flex-wrap:wrap;gap:.6rem}
+.sg-tag{background:#141608;border:1px solid #242718;padding:.45rem 1.1rem;border-radius:50px;font-size:.8rem;color:#c8c9b8;transition:border-color .2s,color .2s,background .2s}
+.sg-tag:hover{border-color:#c8ff00;color:#c8ff00;background:#1a1d0a}
+
+/* PROJECTS */
+.proj-wrap{padding:5rem 3.5rem;border-bottom:1px solid #1c1e16}
+.proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.proj-card{background:#111408;border:1px solid #1c1e16;border-radius:14px;padding:1.6rem;display:flex;flex-direction:column;opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s,box-shadow .25s}
+.proj-card.vis{opacity:1;transform:translateY(0)}
+.proj-card:hover{box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.proj-card:nth-child(2){transition-delay:.1s}
+.proj-card:nth-child(3){transition-delay:.2s}
+.proj-card:nth-child(4){transition-delay:.3s}
+.proj-type{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:#555849;margin-bottom:1rem;font-family:'Space Grotesk',monospace}
+.proj-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#f0ece0;margin-bottom:.8rem;line-height:1.25}
+.proj-desc{font-size:.78rem;color:#5a5d4e;line-height:1.7;flex:1;margin-bottom:1.2rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.ptag{background:#1a1d0a;border:1px solid #2a2e1e;color:#c8ff00;padding:.22rem .6rem;border-radius:4px;font-size:.65rem}
+
+/* EXPERIENCE */
+.exp-wrap{padding:5rem 3.5rem;border-bottom:1px solid #1c1e16}
+.exp-list{display:flex;flex-direction:column;gap:0}
+.exp-row{display:grid;grid-template-columns:180px 1fr;gap:3rem;padding:2rem 0;border-bottom:1px solid #161810;opacity:0;transform:translateX(-14px);transition:opacity .6s,transform .6s}
+.exp-row.vis{opacity:1;transform:translateX(0)}
+.exp-row:nth-child(2){transition-delay:.1s}
+.exp-row:nth-child(3){transition-delay:.2s}
+.exp-row:nth-child(4){transition-delay:.3s}
+.exp-date{font-size:.72rem;color:#3a3d2e;font-family:'Space Grotesk',monospace;padding-top:.2rem}
+.exp-body{}
+.exp-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#f0ece0;margin-bottom:.3rem}
+.exp-org{font-size:.72rem;color:#c8ff00;font-family:'Space Grotesk',monospace;margin-bottom:.6rem;letter-spacing:1px}
+.exp-desc{font-size:.82rem;color:#5a5d4e;line-height:1.7}
+
+/* EDUCATION */
+.edu-wrap{padding:5rem 3.5rem;border-bottom:1px solid #1c1e16}
+.edu-card{background:#111408;border:1px solid #1c1e16;border-radius:14px;padding:1.8rem;max-width:580px;display:flex;gap:1.2rem;align-items:flex-start;opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.edu-card.vis{opacity:1;transform:translateY(0)}
+.edu-icon{width:44px;height:44px;background:#1a1d0a;border:1px solid #2a2e1e;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.edu-info{}
+.edu-deg{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#f0ece0;margin-bottom:.3rem}
+.edu-uni{font-size:.72rem;color:#c8ff00;font-family:'Space Grotesk',monospace;margin-bottom:.5rem;letter-spacing:1px}
+.edu-detail{font-size:.78rem;color:#4a4d3e;line-height:1.6;margin-bottom:.8rem}
+.gpa-pill{display:inline-block;border:1px solid #2a2e1e;padding:.28rem .8rem;border-radius:50px;font-size:.7rem;color:#c8ff00;font-family:'Space Grotesk',monospace}
+
+/* CONTACT */
+.contact-wrap{padding:6rem 3.5rem;background:#0d0f0a;text-align:center}
+.contact-wrap .eyebrow{text-align:center;margin-bottom:.6rem}
+.contact-h{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:#f0ece0;margin-bottom:1rem}
+.contact-sub{font-size:.88rem;color:#5a5d4e;margin-bottom:2.5rem}
+.contact-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:.8rem;margin-bottom:.8rem}
+.c-btn{display:flex;align-items:center;gap:.6rem;background:#141608;border:1px solid #2a2e1e;padding:.65rem 1.4rem;border-radius:8px;font-size:.78rem;color:#9a9c8a;font-family:'Space Grotesk',monospace;transition:border-color .2s,color .2s}
+.c-btn:hover{border-color:#c8ff00;color:#c8ff00}
+.c-btn svg{opacity:.5}
+.footer-txt{margin-top:3rem;font-size:.7rem;color:#2a2e1e;font-family:'Space Grotesk',monospace;letter-spacing:1px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:900px){
+.hero,.about-wrap,.proj-grid{grid-template-columns:1fr}
+.hero::before{font-size:10rem;right:-1rem}
+.hero-name .line1,.hero-name .line2{font-size:3.8rem}
+nav,.hero,.about-wrap,.skills-wrap,.proj-wrap,.exp-wrap,.edu-wrap,.contact-wrap{padding-left:1.5rem;padding-right:1.5rem}
+.exp-row{grid-template-columns:1fr;gap:.3rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SW — Portfolio</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="avail-badge"><span class="avail-dot"></span> Available for opportunities</div>
+    <div class="hero-name">
+      <span class="line1"><span class="w">Soad </span><span class="g">Walid</span></span>
+      <span class="line2">Omar</span>
+    </div>
+    <div class="hero-sub">// Full-Stack .NET Developer &amp; UI/UX</div>
+    <div class="hero-desc">Crafting modern web applications using ASP.NET Core and Angular, with a strong sense of aesthetics and UI/UX design. Passionate about building interfaces that are both functional and beautiful.</div>
+    <div class="hero-btns">
+      <button class="btn-lime" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card"><div class="stat-num">4+</div><div class="stat-lbl">Projects Built</div></div>
+    <div class="stat-card"><div class="stat-num">3.5</div><div class="stat-lbl">GPA / 4.0</div></div>
+    <div class="stat-card"><div class="stat-num">A+</div><div class="stat-lbl">Graduation Grade</div></div>
+    <div class="stat-card"><div class="stat-num">4</div><div class="stat-lbl">Internships</div></div>
+  </div>
+</section>
+
+<!-- ABOUT + PHOTO -->
+<section class="about-wrap" id="about">
+  <div class="about-img-side">
+    <!-- Place your photo named photo.jpg in the same folder -->
+    <img class="about-img" src="photo.jpg" alt="Soad Walid Omar">
+    <div class="img-border-accent"></div>
+    <span class="img-badge">Full-Stack Developer</span>
+  </div>
+  <div class="about-text-side">
+    <div class="eyebrow">About Me</div>
+    <h2>Building the Web,<br>One Pixel at a Time</h2>
+    <p>Full-Stack .NET Developer with a passion for crafting modern web applications. Highly skilled in Front-End development and UI/UX design, combining technical expertise with a strong sense of aesthetics.</p>
+    <p>Proficient in API integration, SQL Server, and clean architecture — committed to delivering efficient, scalable, and visually polished solutions.</p>
+    <div class="about-chips">
+      <span class="chip">ASP.NET Core</span>
+      <span class="chip">Angular</span>
+      <span class="chip">UI/UX</span>
+      <span class="chip">Figma</span>
+      <span class="chip">SQL Server</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-wrap" id="skills">
+  <div class="eyebrow">Technical Skills</div>
+  <div class="sec-h">What I work with</div>
+  <div class="skill-group">
+    <div class="sg-label">Back-End (.NET)</div>
+    <div class="sg-tags">
+      <span class="sg-tag">ASP.NET Core</span>
+      <span class="sg-tag">ASP.NET MVC</span>
+      <span class="sg-tag">C#</span>
+      <span class="sg-tag">Web APIs</span>
+      <span class="sg-tag">Entity Framework</span>
+      <span class="sg-tag">LINQ</span>
+      <span class="sg-tag">SQL Server</span>
+      <span class="sg-tag">OOP</span>
+    </div>
+  </div>
+  <div class="skill-group">
+    <div class="sg-label">Front-End</div>
+    <div class="sg-tags">
+      <span class="sg-tag">Angular</span>
+      <span class="sg-tag">TypeScript</span>
+      <span class="sg-tag">JavaScript ES6+</span>
+      <span class="sg-tag">HTML5</span>
+      <span class="sg-tag">CSS3 / SCSS</span>
+      <span class="sg-tag">Bootstrap 5</span>
+      <span class="sg-tag">Tailwind CSS</span>
+      <span class="sg-tag">Responsive Design</span>
+    </div>
+  </div>
+  <div class="skill-group">
+    <div class="sg-label">UI/UX &amp; Tools</div>
+    <div class="sg-tags">
+      <span class="sg-tag">Figma</span>
+      <span class="sg-tag">Wireframing</span>
+      <span class="sg-tag">Prototyping</span>
+      <span class="sg-tag">Git</span>
+      <span class="sg-tag">GitHub</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="proj-wrap" id="projects">
+  <div class="eyebrow">Projects</div>
+  <div class="sec-h">Things I've built</div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-type">Full-Stack</div>
+      <div class="proj-name">Coffee Shop Management System</div>
+      <div class="proj-desc">Role-based web app for customers and admins — product browsing, cart, order processing, search &amp; pagination, secure auth, and admin CRUD operations.</div>
+      <div class="proj-tags"><span class="ptag">ASP.NET MVC</span><span class="ptag">EF Core</span><span class="ptag">SQL Server</span><span class="ptag">Bootstrap</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-type">Full-Stack</div>
+      <div class="proj-name">Restaurant Management &amp; Delivery</div>
+      <div class="proj-desc">Online ordering, delivery management, customer order tracking, calorie tracking system, dynamic menu display, and customer feedback functionality.</div>
+      <div class="proj-tags"><span class="ptag">ASP.NET Core</span><span class="ptag">SQL Server</span><span class="ptag">JavaScript</span><span class="ptag">Bootstrap</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-type">UI/UX Design</div>
+      <div class="proj-name">Furniture Booking App</div>
+      <div class="proj-desc">Responsive Figma design focusing on product browsing, intuitive booking flow, search &amp; filtering, and a seamless user experience for selecting and reserving furniture.</div>
+      <div class="proj-tags"><span class="ptag">Figma</span><span class="ptag">Prototyping</span><span class="ptag">Wireframing</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-type">UI/UX Design</div>
+      <div class="proj-name">Hotel Booking Interface</div>
+      <div class="proj-desc">Intuitive and responsive hotel booking app design with smooth navigation, easy search and filter options, and an enhanced user experience.</div>
+      <div class="proj-tags"><span class="ptag">Figma</span><span class="ptag">UI/UX</span><span class="ptag">Prototyping</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="exp-wrap" id="experience">
+  <div class="eyebrow">Experience</div>
+  <div class="sec-h">Where I've trained</div>
+  <div class="exp-list">
+    <div class="exp-row">
+      <div class="exp-date">Oct 2025 – Apr 2026</div>
+      <div class="exp-body">
+        <div class="exp-title">Full-Stack .NET Development Scholarship</div>
+        <div class="exp-org">ITI — Information Technology Institute</div>
+        <div class="exp-desc">Intensive 4-month program covering C#, ASP.NET, SQL Server, HTML, CSS, JavaScript, and Angular with hands-on projects.</div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="exp-date">Apr 2024 – Oct 2024</div>
+      <div class="exp-body">
+        <div class="exp-title">Frontend Developer</div>
+        <div class="exp-org">Digital Egypt Pioneers Program</div>
+        <div class="exp-desc">Built responsive and interactive UIs using HTML, CSS, JavaScript, and Bootstrap. Applied UI/UX principles for user-friendly, visually consistent designs.</div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="exp-date">Aug 2023 – Sep 2023</div>
+      <div class="exp-body">
+        <div class="exp-title">UI/UX Design Track</div>
+        <div class="exp-org">Summer Training</div>
+        <div class="exp-desc">Learned UI/UX fundamentals and designed wireframes and prototypes using Figma.</div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="exp-date">Jul 2023 – Aug 2023</div>
+      <div class="exp-body">
+        <div class="exp-title">Cisco CCNA Training</div>
+        <div class="exp-org">National Telecommunication Institute (NTI)</div>
+        <div class="exp-desc">Networking fundamentals including routing, switching, network security basics and troubleshooting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-wrap" id="education">
+  <div class="eyebrow">Education</div>
+  <div class="sec-h">Academic background</div>
+  <div class="edu-card">
+    <div class="edu-icon">🎓</div>
+    <div class="edu-info">
+      <div class="edu-deg">Bachelor's in Computer Science</div>
+      <div class="edu-uni">Arish University — Oct 2022 / Jul 2025</div>
+      <div class="edu-detail">Graduation Project: Front-End &amp; UI/UX Design<br>Grade: A+</div>
+      <span class="gpa-pill">GPA: 3.5 / 4.0</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-wrap" id="contact">
+  <div class="eyebrow">Contact</div>
+  <div class="contact-h">Let's work together</div>
+  <div class="contact-sub">Open to full-time roles and freelance projects. Feel free to reach out!</div>
+  <div class="contact-btns">
+    <div class="c-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      soadwalid964@gmail.com
+    </div>
+    <div class="c-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 5a2 2 0 0 1 1.82-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l.72-.72a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.28 17.72l.64-.8z"/></svg>
+      01554313234
+    </div>
+  </div>
+  <div class="contact-btns">
+    <div class="c-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      soad walid
+    </div>
+  </div>
+  <div class="footer-txt">© 2026 Soad Walid Omar — Built with love &amp; clean code</div>
+</section>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold: 0.12});
+
+document.querySelectorAll('.about-img, .skill-group, .proj-card, .exp-row, .edu-card').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
